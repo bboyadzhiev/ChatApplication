@@ -8,12 +8,17 @@ var app = app || {};
 app.OnlineContacts = (function () {
     'use strict';
 
-
+    
         app.el.Users.load;
-        var currentUser = kendo.observable({ data: null });
-        var onlineContactsData = new Array();
 
-        var init = function (e) {
+        var currentUser = kendo.observable({ data: null });
+
+        var show = function (e) {
+
+            var onlineContactsData = kendo.observable({
+                data: new Array(),
+                title: 'Online Contacts'
+            });
 
             // Get the data about the currently logged in user
             return app.el.Users.currentUser()
@@ -29,7 +34,7 @@ app.OnlineContacts = (function () {
                 var userContactsNumbers = currentUser.data.ContactsNumbers;
                 var usrs = app.el.data('Users');
                 var query = new Everlive.Query();
-                console.log(currentUser.data.ContactsNumbers);
+                //console.log(currentUser.data.ContactsNumbers);
                 //Get only contacts
                 query.where()
                     .isin('PhoneNumber', userContactsNumbers)
@@ -37,8 +42,9 @@ app.OnlineContacts = (function () {
                     .eq('IsOnline', true);
                 usrs.get(query) // filter
                 .then(function (res) {
-                    onlineContactsData = res.result;
-                    console.log(onlineContactsData);
+                    onlineContactsData.data = res.result;
+                    console.log(onlineContactsData.data);
+                    kendo.bind(e.view.element, onlineContactsData);
                 },
                 function (error) {
                     alert(JSON.stringify(error));
@@ -52,32 +58,12 @@ app.OnlineContacts = (function () {
             );
 
             
+            
         };
 
 
-        var navigateHome = function () {
-            app.mobileApp.navigate('#welcome');
-        };
 
-        var logout = function () {
-            app.helper.logout()
-                .then(navigateHome, function (err) {
-                    app.showError(err.message);
-                    navigateHome();
-                });
-        };
-
-       // var logout = app.Contacts.logout;
-
-        var ocvm = kendo.observable({
-            title: 'Online Contacts',
-            ocvmData: onlineContactsData
-        });
         return {
-           // title: 'Online Contacts',
-            load: init,
-            ocvm: ocvm,
-            logout: logout,
-            currentUser: currentUser // TODO: Is this needed?
+            show: show
         }
 }());
