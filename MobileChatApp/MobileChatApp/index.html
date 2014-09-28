@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <script src="cordova.js"></script>
+        <script src="kendo/js/jquery.min.js"></script>
+        <script src="kendo/js/kendo.mobile.min.js"></script>
+
+        <script src="scripts/lib/everlive.all.min.js"></script>
+        
+        <script src="scripts/app/settings.js"></script>
+        <script src="scripts/app.js" type="text/javascript"></script>
+        <script src="scripts/app/users.js" type="text/javascript"></script>
+        <script src="scripts/app/login.js" type="text/javascript"></script>
+        <script src="scripts/app/signup.js" type="text/javascript"></script>
+        <script src="scripts/app/contacts.js" type="text/javascript"></script>
+        <script src="scripts/app/userProfile.js" type="text/javascript"></script>
+
+
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <link href="styles/main.css" rel="stylesheet" />
+    </head>
+    <body id="chatApp">
+        <section data-role="layout" data-id="default">
+            <!--View content will render here-->
+        </section>
+        <!--WELCOME VIEW -->
+        <div data-role="view" id="welcome" data-layout="default" class="welcome-scrn form-view" data-model="app.Login" data-init="app.Login.init" data-show="app.Login.show">
+            <h1 style="text-align: center">
+                <b>Chat App</b>
+            </h1>
+            <form id="login-form">
+                <ul data-role="listview" data-style="inset">
+                    <li class="username"><input type="text" id="loginUsername" placeholder="Username" required validationmessage="Username is required!" /></li>
+                    <li class="password"><input type="password" id="loginPassword" placeholder="Password" required validationmessage="Password is required!" /></li>
+                </ul>
+            </form>
+            <ol class="group-wrp">
+                <li>
+                    <span id="login" data-role="touch" data-bind="events: { tap: login }">
+                        <a data-role="button" class="btn btn-login">Login</a>
+                    </span>
+                </li>
+                <li class="signup">
+                    <a data-role="button" href="views/signupView.html" class="btn-signup">Don't have an account?</a>
+                </li>
+            </ol>
+            <div data-role="footer">
+                <p>Powered by Dionysus Team.</p>
+            </div>
+        </div>
+    </body>
+</html>

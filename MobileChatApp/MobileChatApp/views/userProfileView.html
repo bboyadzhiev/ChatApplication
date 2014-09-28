@@ -1,0 +1,18 @@
+<!-- userProfileView.html -->
+<div data-role="view" id="user-profile" data-layout="default" class="profile-view" data-model="app.UserProfile" data-init="app.UserProfile.init">
+    <header data-role="header">
+        <div data-role="navbar">
+            <h2 data-bind="text: title"></h2>
+            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
+        </div>
+    </header>
+</div>
+<!--Footer-->
+<div data-role="footer">
+    <div data-role="tabstrip">
+        <a href="#/" data-icon="home">Home</a>
+        <!--<a href="#tabstrip-login" data-icon="contacts">Login</a>
+        <a href="#tabstrip-location" data-icon="search">Location</a>-->
+        <a href="#user-profile" data-icon="settings">Profile</a>
+    </div>
+</div>
