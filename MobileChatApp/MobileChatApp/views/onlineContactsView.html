@@ -9,6 +9,8 @@
         </div>
     </header>
 
+
+
     <ul id="onlines" data-role="listview" 
         data-style="inset"
         data-bind="source: data"
@@ -20,16 +22,33 @@
             data-bind="source: data"
             data-template="onlineContacts-template"></select>
          <li style="color: black; vertical-align:central">
+        
+        <a href="views/chatRoomView.html?id=#: Id #">
+        <button data-role="button"
+                onclick="app.mobileApp.navigate('#: toChat #')">
+            CHAT
+        </button>
         -->
 </div>
+
+<!-- OnlineContacts Template -->
 <script id="contactTemplate" type="text/x-kendo-template">
     <li class="onlineContactsListItem">
-        #if(Gender == '87399670-4625-11e4-84b2-15ff98608358'){#
-        <img src="images/female.png" alt="female" />
-        #}else{#
-        <img src="images/male.png" alt="male" />
-        #}#
-        #: DisplayName #
+        # var toChat = 'views/chatRoomView.html?id=' + Id; #
+        # app.asdasdasd = 'views/chatRoomView.html?id=' + Id; #
+        # console.log(toChat);#
+        <div onclick="app.mobileApp.navigate('#: toChat #')">
+
+
+            #if(Gender == '87399670-4625-11e4-84b2-15ff98608358'){#
+            <img src="images/female.png" alt="female" />
+            #}else{#
+            <img src="images/male.png" alt="male" />
+            #}#
+
+            #: DisplayName #
+
+        </div>
     </li>
 
 </script>

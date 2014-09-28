@@ -15,10 +15,6 @@ app.OnlineContacts = (function () {
 
         var show = function (e) {
 
-            var onlineContactsData = kendo.observable({
-                data: new Array(),
-                title: 'Online Contacts'
-            });
 
             // Get the data about the currently logged in user
             return app.el.Users.currentUser()
@@ -42,8 +38,13 @@ app.OnlineContacts = (function () {
                     .eq('IsOnline', true);
                 usrs.get(query) // filter
                 .then(function (res) {
-                    onlineContactsData.data = res.result;
+                    var onlineContactsData = kendo.observable({ 
+                        title: 'Online Contacts',
+                        data: res.result
+                    });
+
                     console.log(onlineContactsData.data);
+                    
                     kendo.bind(e.view.element, onlineContactsData);
                 },
                 function (error) {

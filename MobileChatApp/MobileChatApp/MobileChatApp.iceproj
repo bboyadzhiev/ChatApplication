@@ -29,6 +29,7 @@
     <Content Include="images\male.png" />
     <Content Include="index.html" />
     <Content Include="scripts\app.js" />
+    <Content Include="scripts\app\chatRoom.js" />
     <Content Include="scripts\app\contacts.js" />
     <Content Include="scripts\app\login.js" />
     <Content Include="scripts\app\onlineContacts.js">
@@ -68,6 +69,7 @@
     <Content Include="styles\images\logo-telerik_devcloud.png" />
     <Content Include="styles\images\sprite.png" />
     <Content Include="styles\main.css" />
+    <Content Include="views\chatRoomView.html" />
     <Content Include="views\contactsView.html" />
     <Content Include="views\noApiKey.html" />
     <Content Include="views\onlineContactsView.html" />
