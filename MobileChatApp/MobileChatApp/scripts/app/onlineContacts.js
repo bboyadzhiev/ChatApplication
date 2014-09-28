@@ -43,7 +43,7 @@ app.OnlineContacts = (function () {
                         data: res.result
                     });
 
-                    console.log(onlineContactsData.data);
+                    //console.log(onlineContactsData.data);
                     
                     kendo.bind(e.view.element, onlineContactsData);
                 },
