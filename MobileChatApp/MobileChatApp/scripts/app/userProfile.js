@@ -15,10 +15,11 @@ app.UserProfile = (function () {
             var userModel = kendo.observable({
                 title: "User Profile",
                 Username: currentUser.data.Username,
-                Name: currentUser.data.DisplayName,
+                DisplayName: currentUser.data.DisplayName,
                 Email: currentUser.data.Email,
                 IsOnline: currentUser.data.IsOnline,
-                PhoneNumber: currentUser.data.PhoneNumber
+                PhoneNumber: currentUser.data.PhoneNumber,
+                About: currentUser.data.About
             });
 
             kendo.bind(e.view.element, userModel);

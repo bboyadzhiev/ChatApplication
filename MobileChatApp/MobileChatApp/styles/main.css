@@ -1,9 +1,21 @@
 .profile-data {
-    padding: 15px;
+    margin: 15px;
 }
 
-.profile-data .user-data{
-    float:right;
+.profile-data .user-data {
+    display: inline-block;
+    width: 64%;
+}
+
+.profile-data .user-data p {
+    margin: 5px;
+    top: -5px;
+    position: relative;
+}
+
+.profile-data .is-online {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .cf {
@@ -438,8 +450,9 @@
 }
 
 #chatApp .user-avatar {
-    float: left;
-    width: 50px;
+    display: inline-block;
+    width: 100px;
+    width: 34%;
 }
 
 #chatApp .user-avatar img {
