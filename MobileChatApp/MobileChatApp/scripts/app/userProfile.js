@@ -12,13 +12,21 @@ app.UserProfile = (function () {
         var show = function (e) {
             currentUser = app.Users.currentUser;
 
+            var isOnline = currentUser.data.IsOnline;
+            var value = "Offline";
+
+            if (isOnline == true) {
+                value = "Online";
+            } 
+
             var userModel = kendo.observable({
                 title: "User Profile",
                 Username: currentUser.data.Username,
-                Name: currentUser.data.DisplayName,
+                DisplayName: currentUser.data.DisplayName,
                 Email: currentUser.data.Email,
-                IsOnline: currentUser.data.IsOnline,
-                PhoneNumber: currentUser.data.PhoneNumber
+                IsOnline: value,
+                PhoneNumber: currentUser.data.PhoneNumber,
+                About: currentUser.data.About
             });
 
             kendo.bind(e.view.element, userModel);

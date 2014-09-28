@@ -1,6 +1,6 @@
 <!-- userProfileView.html -->
 <div data-role="view" id="userProfile" data-layout="default" class="profile-view"
-       data-show="app.UserProfile.show">
+     data-show="app.UserProfile.show">
     <header data-role="header">
         <div data-role="navbar">
             <h2 data-bind="text: title"></h2>
@@ -8,12 +8,27 @@
         </div>
     </header>
     <div class="profile-data">
-        <div class="user-avatar"><img src="http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png" /></div>
-        <div class="user-data">
-            <p data-bind="text: Username"></p>
+        <div>
+            <div class="user-avatar">
+                <img src="http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png" />
+            </div>
+            <div class="user-data">
+                <p>
+                    Name: <span data-bind="text: DisplayName"></span>
+                </p>
+                <p>
+                    Username: <span data-bind="text: Username"></span>
+                </p>
+                <p>
+                    Email: <span data-bind="text: Email"></span>
+                </p>
+                <p>
+                    Phone: <span data-bind="text: PhoneNumber"></span>
+                </p>
+            </div>
         </div>
+        <div class="is-online">Online: <span data-bind="text: IsOnline"></span></div>
+        <div class="info">Info: <div data-bind="text: About"></div></div>
     </div>
 </div>
-
-
 
