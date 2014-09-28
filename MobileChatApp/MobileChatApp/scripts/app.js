@@ -32,6 +32,16 @@ var app = (function () {
         }, 'Exit', 'Ok,Cancel');
     };
 
+    var internetConnectionLost = function () {
+        alert("Internet Connection Lost!!")
+        console.log("Internet Connection Lost!!");
+    }
+
+    var internetConnectionFound = function () {
+        alert("Internet Connection Found!!")
+        console.log("Internet Connection Found!!");
+    }
+
     var fixViewResize = function () {
         if (device.platform === 'iOS') {
             setTimeout(function () {
@@ -43,6 +53,10 @@ var app = (function () {
     var onDeviceReady = function () {
         //Handle document events
         document.addEventListener("backbutton", onBackKeyDown, false);
+
+        document.addEventListener("offline", internetConnectionLost, false);
+
+        document.addEventListener("online", internetConnectionFound, false);
 
         navigator.splashscreen.hide();
         fixViewResize();
