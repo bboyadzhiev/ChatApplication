@@ -29,6 +29,7 @@
     <Content Include="scripts\app.js" />
     <Content Include="scripts\app\contacts.js" />
     <Content Include="scripts\app\login.js" />
+    <Content Include="scripts\app\onlineContacts.js" />
     <Content Include="scripts\app\settings.js" />
     <Content Include="scripts\app\signup.js" />
     <Content Include="scripts\app\userProfile.js" />
