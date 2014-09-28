@@ -67,6 +67,7 @@
     <Content Include="styles\main.css" />
     <Content Include="views\contactsView.html" />
     <Content Include="views\noApiKey.html" />
+    <Content Include="views\onlineContactsView.html" />
     <Content Include="views\signupView.html" />
     <Content Include="views\userProfileView.html" />
     <Resource Include="App_Resources\Android\drawable-hdpi\icon.png" />

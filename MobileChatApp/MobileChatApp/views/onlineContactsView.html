@@ -1,0 +1,28 @@
+<!-- onlineContactsView.html -->
+<div data-role="view" id="onlineContacts" data-layout="default" data-model="app.OnlineContacts.ocvm" data-init="app.OnlineContacts.load">
+    <header data-role="header">
+        <div data-role="navbar">
+            <h2 data-bind="text: title"></h2>
+            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
+        </div>
+    </header>
+
+    <ul data-role="listview" data-bind="source: ocvm" data-template="contactTemplate"></ul> 
+    <select data-role="dropdownlist"
+            data-bind="source: ocvmData"
+            data-template="todo-item-template"></select>
+   
+</div>
+
+<script type="text/x-kendo-template"
+        id="todo-item-template">
+    <option>
+        #: PhoneNumber #
+    </option>
+</script>
+
+<script id="contactTemplate" type="text/x-kendo-template">
+        # for (var i = 0; i < ocvmData.length; i++) { #
+        <li>#= ocvmData[i].UserName #</li>
+        # } #
+</script>

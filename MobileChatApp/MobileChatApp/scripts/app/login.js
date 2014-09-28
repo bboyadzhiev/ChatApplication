@@ -33,7 +33,8 @@ app.Login = (function () {
                     return app.Users.load();
                 })
                 .then(function () {
-                    app.mobileApp.navigate('views/contactsView.html');
+                   // app.mobileApp.navigate('views/contactsView.html');
+                    app.mobileApp.navigate('views/onlineContactsView.html');
                 })
                 .then(null,
                       function (err) {

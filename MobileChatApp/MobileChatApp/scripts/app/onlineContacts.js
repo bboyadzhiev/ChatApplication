@@ -7,34 +7,38 @@ var app = app || {};
 
 app.OnlineContacts = (function () {
     'use strict';
-    var onlineContactsModel = (function () {
 
-        var title = 'Online Contacts';
+
+        app.el.Users.load;
         var currentUser = kendo.observable({ data: null });
         var onlineContactsData = new Array();
 
-        var loadOnlineContacts = function () {
+        var init = function (e) {
 
             // Get the data about the currently logged in user
-            return app.everlive.Users.currentUser()
+            return app.el.Users.currentUser()
             .then(function (data) {
                 var currentUserData = data.result;
-                currentUserData.PictureUrl = app.helper.resolveProfilePictureUrl(currentUserData.Picture);
+                //currentUserData.PictureUrl = app.helper.resolveProfilePictureUrl(currentUserData.Picture);
                 currentUser.set('data', currentUserData);
 
                 // Get the data about all registered users
-                return app.everlive.Users.get();
+                return app.el.Users.get();
             })
             .then(function (data) {
                 var userContactsNumbers = currentUser.data.ContactsNumbers;
-                var usrs = app.everlive.data('Users');
+                var usrs = app.el.data('Users');
                 var query = new Everlive.Query();
-
+                console.log(currentUser.data.ContactsNumbers);
                 //Get only contacts
-                query.where().isin('PhoneNumber', userContactsNumbers);
+                query.where()
+                    .isin('PhoneNumber', userContactsNumbers)
+                    .and()
+                    .eq('IsOnline', true);
                 usrs.get(query) // filter
                 .then(function (res) {
                     onlineContactsData = res.result;
+                    console.log(onlineContactsData);
                 },
                 function (error) {
                     alert(JSON.stringify(error));
@@ -46,14 +50,34 @@ app.OnlineContacts = (function () {
                       app.showError(err.message);
                   }
             );
+
+            
         };
+
+
+        var navigateHome = function () {
+            app.mobileApp.navigate('#welcome');
+        };
+
+        var logout = function () {
+            app.helper.logout()
+                .then(navigateHome, function (err) {
+                    app.showError(err.message);
+                    navigateHome();
+                });
+        };
+
+       // var logout = app.Contacts.logout;
+
+        var ocvm = kendo.observable({
+            title: 'Online Contacts',
+            ocvmData: onlineContactsData
+        });
         return {
-            load: loadOnlineContacts,
-            onlineContacts: function () {
-                return onlineContactsData;
-            },
+           // title: 'Online Contacts',
+            load: init,
+            ocvm: ocvm,
+            logout: logout,
             currentUser: currentUser // TODO: Is this needed?
         }
-    }());
-    return onlineContactsModel;
 }());
