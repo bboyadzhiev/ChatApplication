@@ -3,7 +3,7 @@
     <header data-role="header">
         <div data-role="navbar">
             <h2 data-bind="text: title"></h2>
-            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
+            <a data-bind="events: { tap: logout }" class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
         </div>
     </header>
 

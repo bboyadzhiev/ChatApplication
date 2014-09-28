@@ -29,7 +29,6 @@
     <Content Include="scripts\app.js" />
     <Content Include="scripts\app\contacts.js" />
     <Content Include="scripts\app\login.js" />
-    <Content Include="scripts\app\onlineContacts.js" />
     <Content Include="scripts\app\settings.js" />
     <Content Include="scripts\app\signup.js" />
     <Content Include="scripts\app\userProfile.js" />
@@ -63,7 +62,6 @@
     <Content Include="styles\images\logo-telerik_devcloud%402x.png" />
     <Content Include="styles\images\logo-telerik_devcloud.png" />
     <Content Include="styles\images\sprite.png" />
-    <Content Include="styles\main-old.css" />
     <Content Include="styles\main.css" />
     <Content Include="views\contactsView.html" />
     <Content Include="views\noApiKey.html" />

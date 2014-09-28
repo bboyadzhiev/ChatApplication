@@ -1,3 +1,11 @@
+.profile-data {
+    padding: 15px;
+}
+
+.profile-data .user-data{
+    float:right;
+}
+
 .cf {
     zoom: 1;
 }
@@ -10,6 +18,14 @@
 
 .cf:after {
     clear: both;
+}
+
+#signup #footer {
+    display:none;
+}
+
+.km-flat  .km-tabstrip .km-button {
+    background: #1d7471;
 }
 
 .km-flat .km-loader,
@@ -32,8 +48,9 @@
 .km-flat li.km-state-active .km-listview-label,
 .km-flat .km-listview-label input[type=radio]:checked,
 .km-flat .km-listview-label input[type=checkbox]:checked {
-    background: #3598db;
+    background: #1bbc9b;
 }
+
 
 #chatApp.km-flat,
 #chatApp.km-flat .km-navbar,
@@ -426,11 +443,11 @@
 }
 
 #chatApp .user-avatar img {
-    width: 50px;
-    height: 50px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 #chatApp .activity-content {
