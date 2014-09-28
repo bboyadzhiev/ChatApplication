@@ -14,8 +14,8 @@ app.Users = (function () {
             return app.el.Users.currentUser()
                 .then(function (data) {
                     var currentUserData = data.result;
-                    currentUserData.PictureUrl = app.AppHelper.resolveProfilePictureUrl(currentUserData.Picture);
-                    //currentUser.set('data', currentUserData);
+          //          currentUserData.PictureUrl = app.AppHelper.resolveProfilePictureUrl(currentUserData.Picture);
+                    currentUser.set('data', currentUserData);
                     return app.el.Users.get();
                 })
                 .then(function (data) {
