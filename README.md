@@ -1,3 +1,5 @@
+<h1>Team Dionysus</h1>
+<h3>bboyadzheiv ( Борислав Бояджиев ) <br \> diana.stancheva ( Диана Станчева ) </h3>
 This application allows users to communicate each other using text messages. 
 
 After registration, applications stores phone numbers from phonebook to database and checks for matches between users, then automatically connects them.
