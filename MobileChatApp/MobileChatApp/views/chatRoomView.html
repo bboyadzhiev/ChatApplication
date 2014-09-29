@@ -1,29 +1,44 @@
 <!-- chatRoomView.html -->
 <div data-role="view" id="chatRoom"
      data-layout="default"
+     data-model="app.ChatRoom"
      data-show="app.ChatRoom.show">
     <header data-role="header">
         <div data-role="navbar">
             <h2 data-bind="text: title">Loading ...</h2>
             <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
         </div>
+        <div class="txtarea-wrp">
+            <!--   id="chatRomInput"   -->
+            <textarea autofocus="autofocus" data-bind="value: newMessageText" placeholder="Message ..." required></textarea>
+            <a data-role="button" onclick="app.ChatRoom.send()" onfocus="app.ChatRoom.send()">Send</a>
+        </div>
     </header>
-    <div><span> TODO: Messages here </span> </div>
-
-
-  <!--  <ul id="onlines" data-role="listview"
-        data-style="inset"
-        data-bind="source: data"
-        data-template="messageTemplate" class="nav-button"></ul>
-
-    <select data-role="dropdownlist"
-            data-bind="source: data"
-            data-template="onlineContacts-template"></select>
-         <li style="color: black; vertical-align:central">
-        -->
-    <div class="txtarea-wrp" id="chatRomInput">
-
-        <textarea class="messageTextInput123"  autofocus="autofocus" data-bind="value: Text" placeholder="Message ..." required></textarea>
-        <button class="messageButton123" data-role="button">Send</button>
+    
+    <div>
+        <ul id="messagesContainer" data-role="listview"
+            data-bind="source: messages"
+            data-template="messageTemplate"></ul>
     </div>
+
+    
+    <!--  
+
+        <button class="messageButton123 btn" data-role="button" data-bind="click: send">Send</button>
+        <a class="messageButton123" data-role="button" data-bind="events:  { tap: send }">Send</a>
+
+          -->
+  
 </div>
+
+<script id="messageTemplate" type="text/x-kendo-template">
+    <li class="messageItem">
+
+        <div style="color: black">
+            <b>#: creatorName #</b><br />
+            #: text #<br />
+            <em>#: createdAt # </em>
+        </div>
+    </li>
+
+</script>

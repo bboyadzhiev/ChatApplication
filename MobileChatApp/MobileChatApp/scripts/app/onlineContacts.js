@@ -7,7 +7,6 @@ var app = app || {};
 
 app.OnlineContacts = (function () {
     'use strict';
-
     
         app.el.Users.load;
 
