@@ -8,7 +8,7 @@ app.Map = (function () {
     'use strict';
 
     var show = function (e) {
-        var currentUser = app.Users.currentUser;
+        //var currentUser = app.Users.currentUser;
 
         var mapModel = kendo.observable({
             title: "Where Am I?",
