@@ -29,6 +29,7 @@
     <Content Include="scripts\app.js" />
     <Content Include="scripts\app\contacts.js" />
     <Content Include="scripts\app\login.js" />
+    <Content Include="scripts\app\mapView.js" />
     <Content Include="scripts\app\settings.js" />
     <Content Include="scripts\app\signup.js" />
     <Content Include="scripts\app\userProfile.js" />
@@ -64,6 +65,7 @@
     <Content Include="styles\images\sprite.png" />
     <Content Include="styles\main.css" />
     <Content Include="views\contactsView.html" />
+    <Content Include="views\mapView.html" />
     <Content Include="views\noApiKey.html" />
     <Content Include="views\onlineContactsView.html" />
     <Content Include="views\signupView.html" />

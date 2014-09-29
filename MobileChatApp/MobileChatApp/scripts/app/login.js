@@ -72,8 +72,8 @@ app.Login = (function () {
                     });
                 })
                 .then(function () {
-                    app.mobileApp.navigate('views/contactsView.html');
-                    // app.mobileApp.navigate('views/onlineContactsView.html');
+                    //app.mobileApp.navigate('views/contactsView.html');
+                     app.mobileApp.navigate('views/onlineContactsView.html');
                 })
                 .then(null,
                       function (err) {

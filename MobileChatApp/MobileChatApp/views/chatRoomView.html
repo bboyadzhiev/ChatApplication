@@ -1,0 +1,29 @@
+<!-- chatRoomView.html -->
+<div data-role="view" id="chatRoom"
+     data-layout="default"
+     data-show="app.ChatRoom.show">
+    <header data-role="header">
+        <div data-role="navbar">
+            <h2 data-bind="text: title">Loading ...</h2>
+            <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
+        </div>
+    </header>
+    <div><span> TODO: Messages here </span> </div>
+
+
+  <!--  <ul id="onlines" data-role="listview"
+        data-style="inset"
+        data-bind="source: data"
+        data-template="messageTemplate" class="nav-button"></ul>
+
+    <select data-role="dropdownlist"
+            data-bind="source: data"
+            data-template="onlineContacts-template"></select>
+         <li style="color: black; vertical-align:central">
+        -->
+    <div class="txtarea-wrp" id="chatRomInput">
+
+        <textarea class="messageTextInput123"  autofocus="autofocus" data-bind="value: Text" placeholder="Message ..." required></textarea>
+        <button class="messageButton123" data-role="button">Send</button>
+    </div>
+</div>

@@ -1,28 +1,61 @@
 <!-- onlineContactsView.html -->
-<div data-role="view" id="onlineContacts" data-layout="default" data-model="app.OnlineContacts.ocvm" data-init="app.OnlineContacts.load">
+<div data-role="view" id="onlineContacts"
+      data-layout="default"
+     data-show="app.OnlineContacts.show">
     <header data-role="header">
         <div data-role="navbar">
-            <h2 data-bind="text: title"></h2>
+            <h2 data-bind="text: title">Loading ...</h2>
             <a class="nav-button nav-button-back hide-text" data-align="left" data-role="backbutton" href="#welcome">Back</a>
         </div>
     </header>
 
-    <ul data-role="listview" data-bind="source: ocvm" data-template="contactTemplate"></ul> 
-    <select data-role="dropdownlist"
-            data-bind="source: ocvmData"
-            data-template="todo-item-template"></select>
-   
+
+
+    <ul id="onlines" data-role="listview" 
+        data-style="inset"
+        data-bind="source: data"
+        data-template="contactTemplate" class="nav-button">
+
+    </ul> 
+
+    <!--<select data-role="dropdownlist"
+            data-bind="source: data"
+            data-template="onlineContacts-template"></select>
+         <li style="color: black; vertical-align:central">
+        
+        <a href="views/chatRoomView.html?id=#: Id #">
+        <button data-role="button"
+                onclick="app.mobileApp.navigate('#: toChat #')">
+            CHAT
+        </button>
+        -->
 </div>
 
-<script type="text/x-kendo-template"
-        id="todo-item-template">
-    <option>
-        #: PhoneNumber #
-    </option>
+<!-- OnlineContacts Template -->
+<script id="contactTemplate" type="text/x-kendo-template">
+    <li class="onlineContactsListItem">
+        # var toChat = 'views/chatRoomView.html?id=' + Id; #
+        # console.log(toChat);#
+        <div onclick="app.mobileApp.navigate('#: toChat #')">
+
+
+            #if(Gender == '87399670-4625-11e4-84b2-15ff98608358'){#
+            <img src="images/female.png" alt="female" />
+            #}else{#
+            <img src="images/male.png" alt="male" />
+            #}#
+
+            #: DisplayName #
+
+        </div>
+    </li>
+
 </script>
 
-<script id="contactTemplate" type="text/x-kendo-template">
-        # for (var i = 0; i < ocvmData.length; i++) { #
-        <li>#= ocvmData[i].UserName #</li>
-        # } #
-</script>
+<!--<script type="text/x-kendo-template"
+        id="onlineContacts-template">
+    <option>
+        #: Username #
+    </option>
+</script>-->
+
