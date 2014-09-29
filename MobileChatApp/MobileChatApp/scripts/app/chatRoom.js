@@ -88,14 +88,19 @@ app.ChatRoom = (function () {
                                   console.log(res.result[i].Participants[1]);
                                   if (res.result[i].Participants[0] == currentUser.data.Id && res.result[i].Participants[1] == otherUserId) {
                                       chatRoom = res.result[i];
+                                      console.log('ChatRoom binded - ');
                                       found = true;
                                       chatRoomId = chatRoom.Id;
                                   }
 
                                   if (res.result[i].Participants[0] == otherUserId && res.result[i].Participants[1] == currentUser.data.Id) {
                                       chatRoom = res.result[i];
+                                      console.log('ChatRoom binded + ');
                                       found = true;
                                       chatRoomId = chatRoom.Id;
+                                  }
+                                  if (found == true) {
+                                      break;
                                   }
                               }
 
@@ -176,7 +181,7 @@ app.ChatRoom = (function () {
                                           SendTo: otherUserId
                                       });                                               // EXISTING MESSAGE MODEL
                                       kendo.bind(e.view.element, chatRoomViewModel);    // EXISTING MESSAGE MODEL
-
+                                     
                                   } else {
                                       console.log('No messages yet'); // LOG
                                       chatRoomViewModel = kendo.observable({            // EXISTING MESSAGE MODEL
