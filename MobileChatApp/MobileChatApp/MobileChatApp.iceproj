@@ -72,6 +72,9 @@
     <Content Include="styles\images\logo-telerik_devcloud.png" />
     <Content Include="styles\images\sprite.png" />
     <Content Include="styles\main.css" />
+    <Content Include="views\chatRoomView.html">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="views\contactsView.html" />
     <Content Include="views\mapView.html" />
     <Content Include="views\noApiKey.html" />

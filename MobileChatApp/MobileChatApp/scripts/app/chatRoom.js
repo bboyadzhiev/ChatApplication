@@ -1,7 +1,7 @@
 /**
  * ChatRoom model 
  */
-
+var other;
 var app = app || {};
 
 app.ChatRoom = (function () {
@@ -14,11 +14,13 @@ app.ChatRoom = (function () {
         var currentUser;
         var chatRoom;
         var newMessageText;
-
+        console.log(window.location);
+        console.log(other);
 
         function getUrlVars() {
             var vars = [], hash;
             var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            
             for (var i = 0; i < hashes.length; i++) {
                 hash = hashes[i].split('=');
                 vars.push(hash[0]);
@@ -35,9 +37,14 @@ app.ChatRoom = (function () {
         var otherUser;
         var chatRoomId;
 
-        var otherUserId = first;
+      //  var otherUserId = first;
+        var otherUserId = other;
         console.log('This User ID:' + currentUser.data.Id); // LOG
         console.log('Other User ID: ' + otherUserId); // LOG
+        if (otherUserId == null) {
+            console.log(currentUrl);
+            throw 'user id not found!';
+        }
 
         var users = app.el.data('Users');
         users.getById(otherUserId)
@@ -55,9 +62,13 @@ app.ChatRoom = (function () {
                       // First checks if there is a ChatRoom, containing both currentUser and otherUser as part of ChatRoom.Participants
                       var currentCommonChatRoomQuery = new Everlive.Query();
                       currentCommonChatRoomQuery.where()
-                      .isin('Participants', [otherUserId, currentUser.data.Id]);
-                      //.isin(currentUser.data.Id, 'Participants')
-                      //.and()
+                      //.eq('Participants', [otherUserId, currentUser.data.Id]);
+                      //.or()
+                      //.eq('Participants', [currentUser.data.Id, otherUserId]);
+                     .isin('Participants', [currentUser.data.Id])
+                      .and()
+                      .isin('Participants', [otherUserId]);
+
                       console.log('Checking for existing chatroom ... ');// LOG
                       var chatRooms = app.el.data('ChatRoom');
                       chatRooms.get(currentCommonChatRoomQuery)
@@ -78,13 +89,12 @@ app.ChatRoom = (function () {
                                      chatRoomId = res.result.Id;
                                      console.log(res.result);// LOG
                                      console.log('New ChatRoom Id: ' + chatRoomId); // LOG
+
                                  },
                                  function (error) {
                                      console.log(JSON.stringify(error));
                                  });
                           }
-
-
                       },
                       function (error) {
                           console.log(JSON.stringify(error));
@@ -94,7 +104,8 @@ app.ChatRoom = (function () {
                               var messagesQuery = new Everlive.Query();
                               messagesQuery.where()
                                 .eq('ChatRoom', chatRoom.Id);
-
+                              messagesQuery.orderDesc('CreatedAt');;
+                              
                               console.log('Checking for messages for this ChatRoom');
                               var messages = app.el.data('Messages');
                               messages.get(messagesQuery)
@@ -127,8 +138,11 @@ app.ChatRoom = (function () {
                                           });
                                       }
 
+                                      console.log(creatorUserLocation);
+
                                       chatRoomViewModel = kendo.observable({            // EXISTING MESSAGE MODEL
-                                          title: 'Chat with ' + otherUser.DisplayName,  // EXISTING MESSAGE MODEL
+                                         // title: 'Chat with ' + otherUser.DisplayName,  // EXISTING MESSAGE MODEL
+                                          title: otherUser.DisplayName,  // EXISTING MESSAGE MODEL
                                           messages: messagesModel,                       // EXISTING MESSAGE MODEL
                                           newMessageText: '',
                                           CreatedBy: currentUser.data.Id,
@@ -138,13 +152,14 @@ app.ChatRoom = (function () {
                                       kendo.bind(e.view.element, chatRoomViewModel);    // EXISTING MESSAGE MODEL
 
                                   } else {
-
+                                      console.log('No messages yet'); // LOG
                                       chatRoomViewModel = kendo.observable({            // EXISTING MESSAGE MODEL
-                                          title: 'Chat with ' + otherUser.DisplayName,  // EXISTING MESSAGE MODEL
+                                          title: otherUser.DisplayName,  // EXISTING MESSAGE MODEL
                                           messages: {                                   // NO MESSAGES MODEL
                                               text: 'No messages yet',                                 // NO MESSAGES MODEL
                                           creatorName: '',           // NO MESSAGES MODEL
-                                          createdAt: ''             // NO MESSAGES MODEL
+                                          createdAt: '',             // NO MESSAGES MODEL
+                                          location: currentUser.data.Geolocation
                                           },                                     // NO MESSAGES MODEL
                                           newMessageText: '',
                                           CreatedBy: currentUser.data.Id,
@@ -152,22 +167,16 @@ app.ChatRoom = (function () {
                                           SendTo: otherUserId
                                       });                                               // EXISTING MESSAGE MODEL
                                       kendo.bind(e.view.element, chatRoomViewModel);    // EXISTING MESSAGE MODEL
-
-                              
                                   }
                               },
                                     function (error) {
                                         console.log(JSON.stringify(error));// LOG
                                     });
-
                           },
                             function (error) {
                                 console.log(JSON.stringify(error));// LOG
                             });
-
                   });
-
-
     };
 
     var send = function (e) {
@@ -182,12 +191,11 @@ app.ChatRoom = (function () {
             'CreatedBy': chatRoomViewModel.CreatedBy,
             'Text': chatRoomViewModel.newMessageText
         }, function (res) {
-            //console.log(JSON.stringify(res));
-            chatRoomViewModel.title = 'Message Sent';
-            // app.mobileApp.navigate(currentUrl);
+           
             console.log(currentUrl);
-            $('#messagesContainer').load();
-
+            // $('#messagesContainer').load();
+            
+            app.mobileApp.navigate('views/onlineContactsView.html');
         }, function (error) {
             console.log(JSON.stringify(error));// LOG
         });

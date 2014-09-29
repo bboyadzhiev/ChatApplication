@@ -9,19 +9,15 @@ app.OnlineContacts = (function () {
     'use strict';
     
         app.el.Users.load;
-
         var currentUser = kendo.observable({ data: null });
-
         var show = function (e) {
-
 
             // Get the data about the currently logged in user
             return app.el.Users.currentUser()
             .then(function (data) {
                 var currentUserData = data.result;
-                //currentUserData.PictureUrl = app.helper.resolveProfilePictureUrl(currentUserData.Picture);
+               // currentUserData.PictureUrl = app.helper.resolveProfilePictureUrl(currentUserData.Picture);
                 currentUser.set('data', currentUserData);
-
                 // Get the data about all registered users
                 return app.el.Users.get();
             })
@@ -29,7 +25,6 @@ app.OnlineContacts = (function () {
                 var userContactsNumbers = currentUser.data.ContactsNumbers;
                 var usrs = app.el.data('Users');
                 var query = new Everlive.Query();
-                //console.log(currentUser.data.ContactsNumbers);
                 //Get only contacts
                 query.where()
                     .isin('PhoneNumber', userContactsNumbers)
@@ -41,9 +36,6 @@ app.OnlineContacts = (function () {
                         title: 'Online Contacts',
                         data: res.result
                     });
-
-                    //console.log(onlineContactsData.data);
-                    
                     kendo.bind(e.view.element, onlineContactsData);
                 },
                 function (error) {
@@ -56,14 +48,15 @@ app.OnlineContacts = (function () {
                       app.showError(err.message);
                   }
             );
-
-            
-            
         };
-
-
+        
+        var setOther = function (arg) {
+            other = arg;
+            app.mobileApp.navigate('views/chatRoomView.html');
+        }
 
         return {
-            show: show
+            show: show,
+            setOther:setOther
         }
 }());

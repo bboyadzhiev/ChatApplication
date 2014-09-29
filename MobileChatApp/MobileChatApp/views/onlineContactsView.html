@@ -32,7 +32,31 @@
 </div>
 
 <!-- OnlineContacts Template -->
+
+
+
 <script id="contactTemplate" type="text/x-kendo-template">
+    <li class="onlineContactsListItem">
+        # var toChat = 'views/chatRoomView.html?id=' + Id; #
+        # console.log(toChat);#
+        <div onfocus="app.OnlineContacts.setOther('#: Id #')"
+             onclick="app.OnlineContacts.setOther('#: Id #')">
+
+
+            #if(Gender == '87399670-4625-11e4-84b2-15ff98608358'){#
+            <img src="images/female.png" alt="female" />
+            #}else{#
+            <img src="images/male.png" alt="male" />
+            #}#
+
+            #: DisplayName #
+
+        </div>
+    </li>
+
+</script>
+
+<!--<script id="contactTemplate" type="text/x-kendo-template">
     <li class="onlineContactsListItem">
         # var toChat = 'views/chatRoomView.html?id=' + Id; #
         # console.log(toChat);#
@@ -51,12 +75,5 @@
         </div>
     </li>
 
-</script>
-
-<!--<script type="text/x-kendo-template"
-        id="onlineContacts-template">
-    <option>
-        #: Username #
-    </option>
 </script>-->
 
