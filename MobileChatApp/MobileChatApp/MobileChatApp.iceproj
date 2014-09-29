@@ -27,9 +27,17 @@
     <Content Include="cordova.wp8.js" />
     <Content Include="index.html" />
     <Content Include="scripts\app.js" />
+    <Content Include="scripts\app\chatRoom.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="scripts\app\contacts.js" />
+    <Content Include="scripts\app\getGeoLocation.js" />
+    <Content Include="scripts\app\google-maps.js" />
     <Content Include="scripts\app\login.js" />
     <Content Include="scripts\app\mapView.js" />
+    <Content Include="scripts\app\onlineContacts.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="scripts\app\settings.js" />
     <Content Include="scripts\app\signup.js" />
     <Content Include="scripts\app\userProfile.js" />

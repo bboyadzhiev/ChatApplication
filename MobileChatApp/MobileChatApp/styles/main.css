@@ -8,6 +8,18 @@
     height:80px;
 }
 
+#map-canvas {
+    height: 100%;
+    width: 100%;
+    z-index:10000;
+}
+
+.map {
+    height: 400px;
+}
+
+
+
 .messageTextInput123{
    display: inline-block;
   height:100%;

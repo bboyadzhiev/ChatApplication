@@ -20,7 +20,7 @@ app.Login = (function () {
             $loginPassword = $('#loginPassword');
         };
 
-        var getGeoLocation = function() {
+        var getGeoLocation = function () {
             var onSuccess = function (position) {
 
                 currentUser = app.Users.currentUser;
@@ -35,7 +35,7 @@ app.Login = (function () {
 
                 return {
                     Latitude: position.coords.latitude,
-                    Longitude:  position.coords.longitude
+                    Longitude: position.coords.longitude
                 }
 
             };
@@ -46,9 +46,21 @@ app.Login = (function () {
                 alert('code: ' + error.code + '\n' +
                       'message: ' + error.message + '\n');
             }
-
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
         }
+        //var addGeoLocationToDb = function () {
+
+        //        currentUser = app.Users.currentUser;
+        //        var currentUserId = currentUser.data.Id;
+        //        console.log(currentUserId);
+        //        //var latitude = app.GetGeoLocation.latitude;
+        //        //var longitude = app.GetGeoLocation.longitude;
+
+        //        app.el.Users.updateSingle({ Id: currentUserId, "Geolocation": new Everlive.GeoPoint(position.coords.longitude, position.coords.latitude) }, function (data) {
+        //            console.log("geopoint added to database");
+        //        }, function (err) {
+        //            console.log(JSON.stringify(err.message));
+        //        });
+        //}
 
         // Authenticate to use Backend Services as a particular user
         var login = function () {
@@ -60,7 +72,9 @@ app.Login = (function () {
                     return app.Users.load();
                 })
                 .then(function () {
+
                     getGeoLocation();
+
                     currentUser = app.Users.currentUser;
                     var currentUserId = currentUser.data.Id;
                     console.log(currentUserId);
