@@ -62,24 +62,50 @@ app.ChatRoom = (function () {
                       // First checks if there is a ChatRoom, containing both currentUser and otherUser as part of ChatRoom.Participants
                       var currentCommonChatRoomQuery = new Everlive.Query();
                       currentCommonChatRoomQuery.where()
-                      //.eq('Participants', [otherUserId, currentUser.data.Id]);
-                      //.or()
-                      //.eq('Participants', [currentUser.data.Id, otherUserId]);
-                     .isin('Participants', [currentUser.data.Id])
-                      .and()
-                      .isin('Participants', [otherUserId]);
+                      .isin('Participants', [currentUser.data.Id]);
+                     
+                     //.eq('Participants', [currentUser.data.Id, otherUserId] || [otherUserId, currentUser.data.Id]);
+                     // .isin('Participants', [otherUserId]);
+                     // .and()
+                      //.eq('Participants', [otherUserId, currentUser.data.Id])
+                     // .or()
+                     // .and()
+                     // .eq('Participants', [currentUser.data.Id, otherUserId]);
 
                       console.log('Checking for existing chatroom ... ');// LOG
                       var chatRooms = app.el.data('ChatRoom');
                       chatRooms.get(currentCommonChatRoomQuery)
                       .then(function (res) {
+                          var found = false;
                           if (res.result.length > 0) {
-                              chatRoom = res.result[0];
-                              console.log('ChatRoom found: ');
-                              console.log(JSON.stringify(chatRoom));// LOG
-                              chatRoomId = chatRoom.Id;
-                              console.log('Id: ' + chatRoomId);// LOG
-                          } else {
+                              for (var i = 0; i < res.result.length; i++) {//DEBUG
+                                 
+                                  console.log('ChatRooms found: ');        //DEBUG
+                                  console.log('Id: ' + res.result[i].Id);  //DEBUG
+                                  console.log(res.result[i]);   //DEBUG
+                                  console.log('Prts Ids:')
+                                  console.log(res.result[i].Participants[0]);
+                                  console.log(res.result[i].Participants[1]);
+                                  if (res.result[i].Participants[0] == currentUser.data.Id && res.result[i].Participants[1] == otherUserId) {
+                                      chatRoom = res.result[i];
+                                      found = true;
+                                      chatRoomId = chatRoom.Id;
+                                  }
+
+                                  if (res.result[i].Participants[0] == otherUserId && res.result[i].Participants[1] == currentUser.data.Id) {
+                                      chatRoom = res.result[i];
+                                      found = true;
+                                      chatRoomId = chatRoom.Id;
+                                  }
+                              }
+
+                           //   chatRoom = res.result[0];
+                           //   console.log('ChatRoom found: ');
+                              
+                           //   console.log('Id: ' + chatRoomId);// LOG
+                          } 
+
+                          if (found == false){
                               console.log('ChatRoom not found, creating new one ... ');
 
                               // "After creating your item, the server will return the Id of the created item along with its Creation date."
@@ -89,7 +115,7 @@ app.ChatRoom = (function () {
                                      chatRoomId = res.result.Id;
                                      console.log(res.result);// LOG
                                      console.log('New ChatRoom Id: ' + chatRoomId); // LOG
-
+                                     app.mobileApp.navigate('views/onlineContactsView.html');
                                  },
                                  function (error) {
                                      console.log(JSON.stringify(error));
