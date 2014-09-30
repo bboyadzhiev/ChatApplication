@@ -224,11 +224,11 @@ position: relative;
 
 #chatApp .btn-login,
 #chatApp .signup-view .btn-signup,
- #chatApp .btn-add-from-library {
+ #chatApp .btn-add-phonebook {
     background-color: #1bbc9b;
 }
 
-#chatApp .btn-add-from-library {
+#chatApp .btn-add-phonebook {
     width: 100%;
 }
 
