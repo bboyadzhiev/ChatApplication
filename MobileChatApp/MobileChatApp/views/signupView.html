@@ -9,44 +9,31 @@
     <form id="signUp">
         <ul id="signup-form" data-role="listview" data-style="inset">
             <li>
-                <input type="text" id="signupName" data-bind="value: DisplayName" placeholder="Name" required />
-            </li>
-            <li>
-                <input type="email" id="signupEmail" data-bind="value: Email" placeholder="Email" />
-            </li>
-            <li>
-                <input type="text" id="signupUsername" data-bind="value: Username" placeholder="Username" required />
-            </li>
-            <li>
-                <input type="password" id="signupPassword" data-bind="value: Password" placeholder="Password" required />
-            </li>
-            <li>
-                <input type="text" id="phoneNumber" data-bind="value: PhoneNumber" placeholder="Phone Number" required />
-            </li>
-            <li class="txtarea-wrp">
-                <textarea id="signupInfo" data-bind="value: About" placeholder="About">User account created from the hybrid app.</textarea>
-            </li>
-        </ul>
-    </form>
-    <!--<form id="signUp">
-        <ul id="signup-form" data-role="listview" data-style="inset">
-            <li>
                 <input type="text" id="signupName" data-bind="value: DisplayName" placeholder="Name" />
             </li>
             <li>
                 <input type="email" id="signupEmail" data-bind="value: Email" placeholder="Email" />
             </li>
             <li>
-                <input type="text" id="signupUsername" data-bind="value: Username" placeholder="Username" required />
+                <input type="text" id="signupUsername" data-bind="value: Username" placeholder="Username" />
             </li>
             <li>
-                <input type="password" id="signupPassword" data-bind="value: Password" placeholder="Password" required />
+                <input type="password" id="signupPassword" data-bind="value: Password" placeholder="Password" />
             </li>
             <li>
-                <input type="text" id="phoneNumber" data-bind="value: PhoneNumber" placeholder="Phone Number" required />
+                <input type="text" id="phoneNumber" data-bind="value: PhoneNumber" placeholder="Phone Number" />
+            </li>
+            <!--<li class="select-wrp" style="color: black">
+                <select id="signupGenderPicker" data-bind="value: Gender" onchange="app.Signup.onSelectChange(this)">
+                    <option value="87399670-4625-11e4-84b2-15ff98608358" selected="selected">Female</option>
+                    <option value="8311beb0-4625-11e4-84b2-15ff98608358">Male</option>
+                </select>
+            </li>-->
+            <li class="txtarea-wrp">
+                <textarea id="signupInfo" data-bind="value: About" placeholder="About">User account created from the hybrid app.</textarea>
             </li>
         </ul>
-    </form>-->
+    </form>
     <div id="signupBtnWrp" class="signup-btn-wrp disabled">
         <a class="btn btn-signup" data-role="button" data-bind="click: signup">Register</a>
     </div>

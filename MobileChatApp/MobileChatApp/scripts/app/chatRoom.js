@@ -212,6 +212,8 @@ app.ChatRoom = (function () {
                                           SendTo: otherUserId
                                       });                                               
                                       kendo.bind(e.view.element, chatRoomViewModel);    // NO MESSAGES MODEL
+
+                                      app.mobileApp.navigate('views/onlineContactsView.html');
                                   }
                               },
                                     function (error) {
