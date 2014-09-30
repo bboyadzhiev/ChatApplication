@@ -36,6 +36,7 @@ app.OnlineContacts = (function () {
                         title: 'Online Contacts',
                         data: res.result
                     });
+                    console.log(res.result);
                     kendo.bind(e.view.element, onlineContactsData);
                 },
                 function (error) {
