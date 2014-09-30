@@ -37,10 +37,10 @@ var app = (function () {
         console.log("Internet Connection Lost!!");
     }
 
-    var internetConnectionFound = function () {
-        alert("Internet Connection Found!!")
-        console.log("Internet Connection Found!!");
-    }
+    //var internetConnectionFound = function () {
+    //    alert("Internet Connection Found!!")
+    //    console.log("Internet Connection Found!!");
+    //}
 
     var fixViewResize = function () {
         if (device.platform === 'iOS') {
@@ -56,7 +56,7 @@ var app = (function () {
 
         document.addEventListener("offline", internetConnectionLost, false);
 
-        document.addEventListener("online", internetConnectionFound, false);
+        //document.addEventListener("online", internetConnectionFound, false);
 
         navigator.splashscreen.hide();
         fixViewResize();

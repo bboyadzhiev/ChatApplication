@@ -10,9 +10,9 @@
     <div class="profile-data">
         <div>
             <div class="user-avatar" onclick="app.UserProfile.makePicture()" onfocus="app.UserProfile.makePicture()">
-                <img id="myImage" src="http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png" />
+                <!--<img id="myImage" src="http://www.clker.com/cliparts/5/7/4/8/13099629981030824019profile.svg.med.png" />-->
+                <img id="myImage" data-bind="attr: { src: Avatar }" />
             </div>
-            <button id="capturePhotoButton">capturePhotoButton</button>
             <div class="user-data">
                 <p>
                     Name: <span data-bind="text: DisplayName"></span>

@@ -25,6 +25,12 @@
     <Content Include="cordova.android.js" />
     <Content Include="cordova.ios.js" />
     <Content Include="cordova.wp8.js" />
+    <Content Include="images\female.png">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="images\male.png">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="index.html" />
     <Content Include="scripts\app.js" />
     <Content Include="scripts\app\chatRoom.js">
@@ -133,6 +139,7 @@
     <Folder Include="App_Resources\WP8\" />
     <Folder Include="App_Resources\WP8\Tiles\" />
     <Folder Include="App_Resources\WP8\Tiles\Iconic\" />
+    <Folder Include="images\" />
     <Folder Include="kendo\" />
     <Folder Include="kendo\js\" />
     <Folder Include="kendo\styles\" />
