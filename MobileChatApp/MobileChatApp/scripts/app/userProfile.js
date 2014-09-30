@@ -75,8 +75,8 @@ app.UserProfile = (function () {
             var uploadUrl = app.el.Files.getUploadUrl();
             var options = new FileUploadOptions();
             options.fileKey = "file";
-            options.fileName = "everlive.png";
-            options.mimeType = "image/png";
+            options.fileName = Math.random().toString(36).substring(7)+".jpg";
+            options.mimeType = "image/jpeg";
             options.headers = app.el.buildAuthHeader();
 
             var ft = new FileTransfer();
@@ -87,6 +87,9 @@ app.UserProfile = (function () {
                 var uploadedFileId = res.Result[0].Id;
                 var uploadedFileUri = res.Result[0].Uri;
                 // use the Id and the Uri of the uploaded file 
+                console.log("url" + uploadedFileUri);
+                console.log("id" + uploadedFileId);
+                console.log("responce" + responseCode);
 
 
                 //update user info
