@@ -223,8 +223,13 @@ position: relative;
 }
 
 #chatApp .btn-login,
-#chatApp .signup-view .btn-signup {
+#chatApp .signup-view .btn-signup,
+ #chatApp .btn-add-from-library {
     background-color: #1bbc9b;
+}
+
+#chatApp .btn-add-from-library {
+    width: 100%;
 }
 
 #chatApp .signup-view .btn-signup,

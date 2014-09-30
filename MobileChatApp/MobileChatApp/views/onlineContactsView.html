@@ -1,6 +1,6 @@
 <!-- onlineContactsView.html -->
 <div data-role="view" id="onlineContacts"
-      data-layout="default"
+     data-layout="default"
      data-show="app.OnlineContacts.show">
     <header data-role="header">
         <div data-role="navbar">
@@ -9,71 +9,66 @@
         </div>
     </header>
 
-
-
     <ul id="onlines" data-role="listview" 
         data-style="inset"
         data-bind="source: data"
         data-template="contactTemplate" class="nav-button">
 
-    </ul> 
+    </ul>
 
     <!--<select data-role="dropdownlist"
-            data-bind="source: data"
-            data-template="onlineContacts-template"></select>
-         <li style="color: black; vertical-align:central">
+    data-bind="source: data"
+    data-template="onlineContacts-template"></select>
+    <li style="color: black; vertical-align:central">
         
-        <a href="views/chatRoomView.html?id=#: Id #">
-        <button data-role="button"
-                onclick="app.mobileApp.navigate('#: toChat #')">
-            CHAT
-        </button>
-        -->
+    <a href="views/chatRoomView.html?id=#: Id #">
+    <button data-role="button"
+    onclick="app.mobileApp.navigate('#: toChat #')">
+    CHAT
+    </button>
+    -->
 </div>
 
 <!-- OnlineContacts Template -->
 
-
-
 <script id="contactTemplate" type="text/x-kendo-template">
     <li class="onlineContactsListItem">
-        # var toChat = 'views/chatRoomView.html?id=' + Id; #
+        # var toChat = 'views/chatRoomView.html?id=' + Id;
+        #
         # console.log(toChat);#
         <div onfocus="app.OnlineContacts.setOther('#: Id #')"
              onclick="app.OnlineContacts.setOther('#: Id #')">
-
-
-            #if(Gender == '87399670-4625-11e4-84b2-15ff98608358'){#
-            <img src="images/female.png" alt="female" />
-            #}else{#
-            <img src="images/male.png" alt="male" />
-            #}#
-
-            #: DisplayName #
             
+            #if (Gender == '87399670-4625-11e4-84b2-15ff98608358') {#
+                <img src="images/female.png" alt="female" />
+            #}else {#
+                <img src="images/male.png" alt="female" />
+            #}#
+            
+            #: DisplayName #            
         </div>
     </li>
 
 </script>
 
 <!--<script id="contactTemplate" type="text/x-kendo-template">
-    <li class="onlineContactsListItem">
-        # var toChat = 'views/chatRoomView.html?id=' + Id; #
-        # console.log(toChat);#
-        <div onfocus="app.mobileApp.navigate('#: toChat #')" 
-             onclick="app.mobileApp.navigate('#: toChat #')">
+<li class="onlineContactsListItem">
+# var toChat = 'views/chatRoomView.html?id=' + Id; #
+# console.log(toChat);#
+<div onfocus="app.mobileApp.navigate('#: toChat #')" 
+onclick="app.mobileApp.navigate('#: toChat #')">
 
 
-            #if(Gender == '87399670-4625-11e4-84b2-15ff98608358'){#
-            <img src="images/female.png" alt="female" />
-            #}else{#
-            <img src="images/male.png" alt="male" />
-            #}#
+#if(Gender == '87399670-4625-11e4-84b2-15ff98608358'){#
+<img src="images/female.png" alt="female" />
+#}else{#
+<img src="images/male.png" alt="male" />
+#}#
 
-            #: DisplayName #
+#: DisplayName #
 
-        </div>
-    </li>
+</div>
+</li>
 
 </script>-->
 

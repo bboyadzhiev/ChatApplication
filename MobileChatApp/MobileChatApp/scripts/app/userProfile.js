@@ -35,32 +35,10 @@ app.UserProfile = (function () {
     };
 
     var makePicture = function () {
-        //navigator.camera.getPicture(onSuccess, onFail, {
-        //    quality: 50,
-        //    destinationType: Camera.DestinationType.DATA_URL
-        //});
-        //function onSuccess(imageData) {
-        //    //var image = document.getElementById('myImage');
-        //    //image.src = "data:image/jpeg;base64," + imageData;
-        //    //console.log(image.src);
-        //    //var file = {
-        //    //    "Filename": "everlive111111.png",
-        //    //    "ContentType": "image/jpeg",
-        //    //    "CustomField": "customValue",
-        //    //    "base64": image.src /* the file contents in base64 format */
-        //    //};
-        //    //app.el.Files.create(file,
-        //    //    function (data) {
-        //    //        alert(JSON.stringify(data));
-        //    //    },
-        //    //    function (error) {
-        //    //        alert(JSON.stringify(error));
-        //    //    });
-        //}
         navigator.camera.getPicture(onSuccess, onFail, {
-                                        quality: 50,
-                                        destinationType: Camera.DestinationType.FILE_URI
-                                    });
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI
+        });
 
         function onSuccess(imageURI) {
             var image = document.getElementById('myImage');
@@ -90,6 +68,7 @@ app.UserProfile = (function () {
 
                 ////update user info
                 updateUser(uploadedFileUri);
+                navigator.notification.vibrate(2500);
             }, function (error) {
                 alert("An error has occurred:" + JSON.stringify(error));
             }, options);
@@ -98,7 +77,8 @@ app.UserProfile = (function () {
         function updateUser(uploadedFileUri) {
             app.el.Users.updateSingle({ Id: app.Users.currentUser.data.Id, Avatar: uploadedFileUri },
                                       function (data) {
-                                          alert(JSON.stringify(data));
+                                          //alert(JSON.stringify(data));
+                                          console.log(JSON.stringify(data))
                                       },
                                       function (error) {
                                           alert(JSON.stringify(error));
@@ -112,6 +92,6 @@ app.UserProfile = (function () {
 
     return {
         show: show,
-        makePicture: makePicture
+        makePicture: makePicture,
     }
 }());
