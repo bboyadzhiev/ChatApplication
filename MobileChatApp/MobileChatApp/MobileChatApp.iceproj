@@ -46,6 +46,9 @@
     </Content>
     <Content Include="scripts\app\settings.js" />
     <Content Include="scripts\app\signup.js" />
+    <Content Include="scripts\app\syncContacts.js">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="scripts\app\userProfile.js" />
     <Content Include="scripts\app\users.js" />
     <Content Include="scripts\lib\everlive.all.min.js" />
